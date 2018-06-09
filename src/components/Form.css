@@ -26,3 +26,7 @@
 .create-button:hover {
   background: #3bc9db;
 }
+
+.palette {
+  align-self: center;
+}

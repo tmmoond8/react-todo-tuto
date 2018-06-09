@@ -12,7 +12,8 @@ class App extends Component {
       { id: 0, text: "리액트에 대해", checked: false },
       { id: 1, text: "밤이다", checked: true },
       { id: 2, text: "괴로운 밤이다.", checked: true }
-    ]
+    ],
+    textColor: "#343a40"
   };
 
   handleChange = e => {
@@ -52,14 +53,22 @@ class App extends Component {
     });
   };
 
+  handleSelectColor = e => {
+    console.log(e.target.value);
+    this.setState({
+      textColor: e.target.value
+    });
+  };
+
   render() {
-    const { todos, input } = this.state;
+    const { todos, input, textColor } = this.state;
     const {
       handleCreate,
       handleChange,
       handleKeyPress,
       handleToggle,
-      handleRemove
+      handleRemove,
+      handleSelectColor
     } = this;
     return (
       <div className="App">
@@ -67,14 +76,17 @@ class App extends Component {
           form={
             <Form
               value={input}
+              textColor={textColor}
               onChange={handleChange}
               onCreate={handleCreate}
               onKeyPress={handleKeyPress}
+              onSelectColor={handleSelectColor}
             />
           }
         >
           <TodoItemList
             todos={todos}
+            textColor={textColor}
             onRemove={handleRemove}
             onToggle={handleToggle}
           />
